@@ -1,15 +1,26 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 import { FaLocationPin } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import PrimaryBtn from "../common/PrimaryBtn";
 import { TbHandClick } from "react-icons/tb";
+import { 
+    FaCode, 
+    FaUniversity, 
+    FaHardHat, 
+    FaUserMd, 
+    FaShoppingCart, 
+    FaOilCan, 
+    FaIndustry, 
+    FaBuilding 
+} from "react-icons/fa";
 
 const data = [
     {
-        title: "Technology & Digital",
-        flag: "LT",
+        title: "Technology & ",
+        icon: FaCode,
         description:
             "We Source Developers, It Specialists, And Digital Experts, Helping Companies Build Innovative Teams That Accelerate Transformation And Growth.",
         jobs: [
@@ -27,7 +38,7 @@ const data = [
 
     {
         title: "Finance & Banking",
-        flag: "MT",
+        icon: FaUniversity,
         description:
             "From Accountants To Compliance Officers, We Provide Financial Institutions With Skilled Professionals To Strengthen Their Operations And Trust.",
         jobs: [
@@ -48,7 +59,7 @@ const data = [
     },
     {
         title: "Construction & Engineering",
-        flag: "AU",
+        icon: FaHardHat,
         description:
             "Our recruitment solutions deliver engineers, project managers, and skilled laborers to support companies in executing complex infrastructure projects.",
         jobs: [
@@ -69,7 +80,7 @@ const data = [
     },
     {
         title: "Healthcare",
-        flag: "DE",
+        icon: FaUserMd,
         description:
             "We connect healthcare providers with nurses, technicians, and specialists, ensuring qualified staff for reliable and efficient patient care.",
         jobs: [
@@ -90,7 +101,7 @@ const data = [
     },
     {
         title: "Retail & Hospitality",
-        flag: "CZ",
+        icon: FaShoppingCart,
         description:
             "By sourcing customer service teams, sales staff, and hospitality professionals, we enable companies to deliver excellent service experiences.",
         jobs: [
@@ -111,7 +122,7 @@ const data = [
     },
     {
         title: "Oil & Gas",
-        flag: "SK",
+        icon: FaOilCan,
         description:
             "We recruit engineers, safety officers, and technicians with the expertise needed to support vital operations in the oil and gas sector.",
         jobs: [
@@ -132,7 +143,7 @@ const data = [
     },
     {
         title: "Manufacturing",
-        flag: "LV",
+        icon: FaIndustry,
         description:
             "Our manpower solutions supply experienced workers and specialists who enhance production efficiency and ensure compliance in manufacturing industries.",
         jobs: [
@@ -154,7 +165,7 @@ const data = [
     },
     {
         title: "Semi & Government ",
-        flag: "HU",
+        icon: FaBuilding,
         description:
             "We partner with government entities to provide skilled administrative, IT, and project management talent that supports national growth and initiatives.",
         jobs: [
@@ -204,8 +215,8 @@ const Flags = () => {
 
     return (
         <section className="flex flex-wrap justify-center gap-4 items-center ">
-            {data.map((flag, index) => (
-                <Flag openModal={() => toggleModal(flag)} key={index} flag={flag.flag} title={flag.title} desc={flag.description} />
+            {data.map((item, index) => (
+                <Flag openModal={() => toggleModal(item)} key={index} icon={item.icon} title={item.title} desc={item.description} />
             ))}
             <motion.div
                 tabIndex={-1}
@@ -219,7 +230,9 @@ const Flags = () => {
                     <div className="relative bg-white rounded-lg shadow-lg">
                         <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
                             <h3 className="text-xl font-ibold text-gray-900 flex items-center gap-4">
-                                <Image src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${modalContent.flag}.svg`} alt="Flags" width={80} height={40} className="h-full max-w-10" />
+                                <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full">
+                                    {modalContent.icon && React.createElement(modalContent.icon, { size: 24, className: "text-primary" })}
+                                </div>
                                 {modalContent.title}
                             </h3>
                             <button
@@ -274,14 +287,14 @@ const Flags = () => {
 
 export default Flags;
 
-const Flag = ({ flag, title, desc, openModal }: any) => {
+const Flag = ({ icon, title, desc, openModal }: any) => {
     return (
         <div onClick={openModal} className="cursor-pointer flex flex-col items-center px-4 md:px-8 lg:px-16 lg:max-w-[32%] mt-4 max-w-[100%] gap-5">
             <motion.div className="relative flex justify-center items-center ">
                 <TbHandClick className="absolute -right-2 top-16 -rotate-12" size={20} />
                 <FaLocationPin size={100} className="text-primary" />
-                <div className="w-12 h-12 absolute top-4 rounded-full overflow-hidden ">
-                    <Image src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${flag}.svg`} alt="Flags" width={800} height={400} className="h-full scale-150" />
+                <div className="w-12 h-12 absolute top-4 rounded-full bg-white flex items-center justify-center shadow-lg">
+                    {icon && React.createElement(icon, { size: 24, className: "text-primary" })}
                 </div>
             </motion.div>
             <div className="flex flex-col gap-4 text-center">
