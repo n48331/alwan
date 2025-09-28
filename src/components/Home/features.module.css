@@ -1,0 +1,18 @@
+.card:hover
+{
+    background-color: var(--primary);
+    color: var(--secondary) !important;
+}
+.card:hover>div, .card:hover>div>.icon{
+    background-color:var(--secondary) !important;
+    color:  var(--primary) !important;
+}
+.card:hover p, .card:hover h3{
+    color: var(--secondary) !important;
+}
+.card{
+    background-color: var(--secondary);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}

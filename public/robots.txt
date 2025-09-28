@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.glidewaymigration.com/
+
+# Sitemaps
+Sitemap: https://www.glidewaymigration.com/sitemap.xml
